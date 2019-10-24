@@ -10,7 +10,7 @@ interface imageOptCallback{
 }
 
 public class imageOptClient {
-    public void constructImageOptURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
+    public void constructURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
         imageView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
@@ -25,7 +25,7 @@ public class imageOptClient {
                         .path(uri.getPath())
                         .appendQueryParameter("w", String.valueOf(imageSize.getWidth()))
                         .appendQueryParameter("h", String.valueOf(imageSize.getHeight()));
-
+ f
                 if (crop) {
                     builder.appendQueryParameter("c", "true");
                 }
