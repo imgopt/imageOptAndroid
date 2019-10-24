@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/imageOptAndroid.iml" filepath="$PROJECT_DIR$/imageOptAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imageoptclient/imageoptclient.iml" filepath="$PROJECT_DIR$/imageoptclient/imageoptclient.iml" />
+    </modules>
+  </component>
+</project>
