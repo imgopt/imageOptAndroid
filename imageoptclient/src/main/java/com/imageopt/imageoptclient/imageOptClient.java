@@ -5,12 +5,13 @@ import android.util.Size;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
-interface imageOptCallback{
-    public void onSuccess(String imageOptUrl);
-}
-
 public class imageOptClient {
-    public void constructURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
+
+    interface imageOptCallback{
+        public void onSuccess(String imageOptUrl);
+    }
+
+    public static void constructURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
         imageView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
