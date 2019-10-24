@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 public class imageOptClient {
 
-    interface imageOptCallback{
+    public interface imageOptCallback{
         public void onSuccess(String imageOptUrl);
     }
 
