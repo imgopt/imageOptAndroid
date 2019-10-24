@@ -25,7 +25,7 @@ public class imageOptClient {
                         .path(uri.getPath())
                         .appendQueryParameter("w", String.valueOf(imageSize.getWidth()))
                         .appendQueryParameter("h", String.valueOf(imageSize.getHeight()));
- f
+
                 if (crop) {
                     builder.appendQueryParameter("c", "true");
                 }
