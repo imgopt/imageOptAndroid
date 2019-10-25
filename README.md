@@ -52,7 +52,7 @@ This is a simple interface with one function onSuccess which is called with imag
     }
 ```
 #### constructURL
-Function to constructImageOptURL to construct an imageOpt URL with query parameters using raw imageUrl and imageView.
+Function to construct an imageOpt URL with query parameters given a raw imageUrl and an imageView.
 
 ```
 /* Parameters:
