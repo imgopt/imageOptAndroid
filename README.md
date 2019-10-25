@@ -1,5 +1,5 @@
-# imageOptAndroid
-imageOpt client library for Android, to construct parameterized imageOpt url from plain image url.
+# imageOptClient - Android
+imageOpt client library for Android, to construct parameterized imageOpt url from plain imageSet URL created at [imageOpt][1]
 
 For more information please see [imageOpt][1]
 
@@ -43,25 +43,23 @@ dependencies {
 ## Documentation
 
 #### imageOptCallBack
-Interface for callback, we will be using this to call back from constructURL.
-
-This is a simple interface with one function onSuccess which is called with imageOptURL(String) as a parameter.
+This is a simple interface with one function onSuccess which is called with parameterized imageOptURL(String) as a parameter.
 ```
     public interface imageOptCallback{
         public void onSuccess(String imageOptUrl);
     }
 ```
 #### constructURL
-Function to construct an imageOpt URL with query parameters given a raw imageUrl and an imageView.
+Function to construct an imageOpt URL with query parameters given an imageSet URL create at [imageOpt][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
 
 ```
 /* Parameters:
- *   imageUrl : specifies the url of the image set to be loaded
+ *   imageUrl : specifies the url of the imageSet to be loaded
  *   imageView : specifies the image view into which the image will loaded/displayed
  *   crop : whether or not, the image can be cropped if needed to match the requested size
  *   overrideSize : if specified this parameter will be used as image size else the size 
  *                          will be taken from image view.
- *   callback : callback.onSuccess will be called with imageOpt url
+ *   callback : callback.onSuccess will be called with parameterized imageOpt url
  */
 ```
 
@@ -74,7 +72,7 @@ import com.imageopt.imageoptclient.imageOptClient;
 	...
 
 /* Use the URL of imageSet obtained from imageOpt.com, this can be directly used 
- *or fetched from backend server */
+ * or fetched from backend server */
  String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
 
 // Replace imageView with any other view of type ImageView as per your needs
@@ -114,7 +112,7 @@ imageOptClient.constructURL( imageUrl, imageView, true, new Size(60,40),
 License
 --------
 
-    Copyright 2019 imageOpt
+    Copyright (c) 2019 imageOpt
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
