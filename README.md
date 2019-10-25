@@ -3,7 +3,7 @@ imageOpt client library for Android, to construct parameterized imageOpt url fro
 
 ## Download
 
-### Gradle - Using jCenter
+#### Gradle - Using jCenter
 
 First add jCenter repository in your project `build.gradle` file:
 ```groovy
@@ -18,9 +18,9 @@ dependencies {
 }
 ```
 
-#### OR
+##### OR
 
-### Gradle - Using Jitpack
+#### Gradle - Using Jitpack
 
 First add JitPack repository line in your project `build.gradle` file:
 ```groovy
@@ -38,8 +38,9 @@ dependencies {
 }
 ```
 
+
 ## Usage
-Code below demonstrats how to load an image from imageUrl into imageView.
+Code below demonstrats how to load a image from imageUrl into imageView, in this case the request is to fit the image inside imageView.
 ```
 /* Import imageOptClient */
 import com.imageopt.imageoptclient.imageOptClient;
@@ -48,10 +49,10 @@ import com.imageopt.imageoptclient.imageOptClient;
 
 /* Use the URL of imageSet obtained from imageOpt.com, this can be directly used 
  *or fetched from backend server */
- String imageUrl = "https://dbcaihe8155jo.cloudfront.net/9no-cq/q"
+ String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
 
 // Replace imageView with any other view of type ImageView as per your needs
-final ImageView imageView = findViewById(R.id.image_view); 
+final ImageView imageView = findViewById(R.id.image_view);
 
 imageOptClient.constructURL( imageUrl, imageView, false, null,
 	new imageOptClient.imageOptCallback() {
@@ -63,5 +64,24 @@ imageOptClient.constructURL( imageUrl, imageView, false, null,
 				.load(imageOptUrl)
 				.into(imageView);
 		}
-});  
+});
+```
+Code below demonstrates how to load a fixed size image(60x40) from imageUrl into imageView, in this case the request is to crop the image to request size.
+```
+import com.imageopt.imageoptclient.imageOptClient;
+
+	...
+	
+String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
+final ImageView imageView = findViewById(R.id.image_view);
+
+imageOptClient.constructURL( imageUrl, imageView, true, new Size(60,40),
+	new imageOptClient.imageOptCallback() {
+		@Override
+		public void onSuccess(String imageOptUrl) {
+			Picasso.get()
+				.load(imageOptUrl)
+				.into(imageView);
+		}
+});
 ```
