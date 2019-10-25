@@ -1,5 +1,7 @@
 # imageOptAndroid
-imageOpt client library for Android, to construct parameterized imageOpt url from plain image url
+imageOpt client library for Android, to construct parameterized imageOpt url from plain image url.
+
+For more information please see [imageOpt][1]
 
 ## Download
 
@@ -38,6 +40,30 @@ dependencies {
 }
 ```
 
+## Documentation
+
+#### imageOptCallBack
+Interface for callback, we will be using this to call back from constructURL.
+
+This is a simple interface with one function onSuccess which is called with imageOptURL(String) as a parameter.
+```
+    public interface imageOptCallback{
+        public void onSuccess(String imageOptUrl);
+    }
+```
+#### constructURL
+Function to constructImageOptURL to construct an imageOpt URL with query parameters using raw imageUrl and imageView.
+
+```
+/* Parameters:
+ *   imageUrl : specifies the url of the image set to be loaded
+ *   imageView : specifies the image view into which the image will loaded/displayed
+ *   crop : whether or not, the image can be cropped if needed to match the requested size
+ *   overrideSize : if specified this parameter will be used as image size else the size 
+ *                          will be taken from image view.
+ *   callback : callback.onSuccess will be called with imageOpt url
+ */
+```
 
 ## Usage
 Code below demonstrats how to load a image from imageUrl into imageView, in this case the request is to fit the image inside imageView.
@@ -85,3 +111,22 @@ imageOptClient.constructURL( imageUrl, imageView, true, new Size(60,40),
 		}
 });
 ```
+License
+--------
+
+    Copyright 2019 imageOpt
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
+ [1]: https://imageopt.com
