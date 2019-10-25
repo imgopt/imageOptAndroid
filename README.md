@@ -18,6 +18,8 @@ dependencies {
 }
 ```
 
+#OR
+
 Gradle - Using Jitpack
 
 First add JitPack repository line in your project `build.gradle` file:
