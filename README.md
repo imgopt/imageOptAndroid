@@ -3,7 +3,7 @@ imageOpt client library for Android, to construct parameterized imageOpt url fro
 
 ## Download
 
-Gradle - Using jCenter
+###Gradle - Using jCenter
 
 First add jCenter repository in your project `build.gradle` file:
 ```groovy
@@ -18,9 +18,9 @@ dependencies {
 }
 ```
 
-#OR
+####OR
 
-Gradle - Using Jitpack
+###Gradle - Using Jitpack
 
 First add JitPack repository line in your project `build.gradle` file:
 ```groovy
