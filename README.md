@@ -50,7 +50,7 @@ This is a simple interface with one function onSuccess which is called with para
     }
 ```
 #### constructURL
-Function to construct an imageOpt URL with query parameters given an imageSet URL create at [imageOpt][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
+Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [imageOpt][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
 
 ```
 /* Parameters:
