@@ -1,7 +1,7 @@
 # imageOptClient - Android
-imageOpt client library for Android, to construct parameterized imageOpt url from plain imageSet URL created at [imageOpt Image CDN][1]
+imageOpt client library for Android, to construct parameterized imageOpt url from plain imageSet URL created at [Image CDN][1]
 
-For more information please see [imageOpt Image CDN][1]
+For more information please see [Image CDN][1]
 
 ## Download
 
@@ -50,7 +50,7 @@ This is a simple interface with one function onSuccess which is called with para
     }
 ```
 #### constructURL
-Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [imageOpt Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
+Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
 
 ```
 /* Parameters:
