@@ -75,7 +75,7 @@ public class imageOptClient {
                 /* If locale is specified add language query parameter 'l'.
                  */
                 if (locale != null) {
-                    builder.appendQueryParameter("l", locale.toLanguageTag());
+                    builder.appendQueryParameter("l", locale.getLanguage());
                 }
 
                 /* Get the final URL string from the Uri.Builder
