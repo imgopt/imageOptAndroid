@@ -25,7 +25,7 @@ public class imageOptClient {
      *   imageView : specifies the image view into which the image will loaded/displayed
      *   crop : whether or not, the image can be cropped if needed to match the requested size
      *   overrideSize : if specified this parameter will be used as image size else the size will be taken from image view.
-     *   locale: if specified this parameter is specify the preferred language of the image
+     *   locale: specifies the preferred language of the image
      *   callback : callback.onSuccess will be called with imageOpt url
      */
 
