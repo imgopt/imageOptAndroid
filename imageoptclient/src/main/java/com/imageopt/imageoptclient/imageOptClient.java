@@ -5,6 +5,8 @@ import android.util.Size;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
+import java.util.Locale;
+
 public class imageOptClient {
 
 
@@ -12,21 +14,22 @@ public class imageOptClient {
      * This is a simple interface with one function onSuccess which is called with imageOptURL(String) as a parameter.
      */
 
-    public interface imageOptCallback{
+    public interface imageOptCallback {
         public void onSuccess(String imageOptUrl);
     }
 
 
-    /* Lets define the function constructURL with following parameters
+    /* Lets define the function constructURLWithLocale with following parameters
      * Parameters:
      *   imageUrl : specifies the url of the image set to be loaded
      *   imageView : specifies the image view into which the image will loaded/displayed
      *   crop : whether or not, the image can be cropped if needed to match the requested size
      *   overrideSize : if specified this parameter will be used as image size else the size will be taken from image view.
+     *   locale: if specified this parameter is specify the preferred language of the image
      *   callback : callback.onSuccess will be called with imageOpt url
      */
 
-    public static void constructURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
+    public static void constructURLWithLocale(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final Locale locale, final imageOptCallback callback) {
 
         /* Since we need the width and height of the image view, we have to wait for the system to perform the layout,
          * one way to achieve this to add a pre draw listener to view tree observer and do the processing inside onPreDraw().
@@ -45,7 +48,7 @@ public class imageOptClient {
                 /* Determine the final imageSize to be used, if overrideSize is passed
                  * use that as the final size, else use imageView's size.
                  */
-                Size imageSize = (overrideSize!=null) ? overrideSize : new Size(imageView.getWidth(),imageView.getHeight());
+                Size imageSize = (overrideSize != null) ? overrideSize : new Size(imageView.getWidth(), imageView.getHeight());
 
                 /* Parse the given imageUrl into Uri instance and create an empty instance of Uri.Builder
                  */
@@ -69,14 +72,33 @@ public class imageOptClient {
                     builder.appendQueryParameter("c", "true");
                 }
 
+                /* If locale is specified add language query parameter 'l'.
+                 */
+                if (locale != null) {
+                    builder.appendQueryParameter("l", locale.toLanguageTag());
+                }
+
                 /* Get the final URL string from the Uri.Builder
                  * and invoke callback.onSuccess with with the imageOpt URL.
                  */
                 String imageOptUrl = builder.build().toString();
                 callback.onSuccess(imageOptUrl);
-                
+
                 return false;
             }
         });
     }
+
+    /* Variant without language parameter
+     */
+    public static void constructURL(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
+        constructURLWithLocale(imageUrl, imageView, crop, overrideSize, null, callback);
+    }
+
+    /* Variant which takes users current locale
+     */
+    public static void constructURLAutoLocale(final String imageUrl, final ImageView imageView, final Boolean crop, final Size overrideSize, final imageOptCallback callback) {
+        constructURLWithLocale(imageUrl, imageView, crop, overrideSize, Locale.getDefault(), callback);
+    }
+
 }
