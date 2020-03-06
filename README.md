@@ -147,7 +147,7 @@ final ImageView imageView = findViewById(R.id.image_view);
 imageOptClient.constructURL( imageUrl, imageView, false,
 	new imageOptClient.imageOptCallback() {
 		@Override
-		public void onSuccess(String imageOptUrl) {
+		public void onSuccess(Uri imageOptUrl) {
 			/* Here we use Picasso to fetch, you can use any method of your choice,
 			 * just make sure standard cache control is enabled */
 			Picasso.get()
@@ -189,7 +189,7 @@ final ImageView imageView = findViewById(R.id.image_view);
 imageOptClient.constructURL( imageUrl, imageView, false, true,
 	new imageOptClient.imageOptCallback() {
 		@Override
-		public void onSuccess(String imageOptUrl) {
+		public void onSuccess(Uri imageOptUrl) {
 			/* Here we use Picasso to fetch, you can use any method of your choice,
 			 * just make sure standard cache control is enabled */
 			Picasso.get()
@@ -218,7 +218,7 @@ Locale locale = new Locale("ar");
 imageOptClient.constructURL( imageUrl, imageView, false, locale,
 	new imageOptClient.imageOptCallback() {
 		@Override
-		public void onSuccess(String imageOptUrl) {
+		public void onSuccess(Uri imageOptUrl) {
 			/* Here we use Picasso to fetch, you can use any method of your choice,
 			 * just make sure standard cache control is enabled */
 			Picasso.get()
