@@ -43,7 +43,7 @@ dependencies {
 ## Documentation
 
 #### imageOptCallBack
-This is a simple interface with one function onSuccess which is called with parameterized imageOptURL(String) as a parameter.
+This is a simple interface with one function onSuccess which is called with parameterized imageOptURL(Uri) as a parameter.
 ```
     public interface imageOptCallback{
         public void onSuccess(Uri imageOptURL);
