@@ -16,7 +16,7 @@ repositories {
 And then simply add the following line to the `dependencies` section of your app module `build.gradle` file:
 ```
 dependencies {
-	implementation 'com.imageopt:imageoptclient:1.0.0'
+	implementation 'com.imageopt:imageoptclient:1.4.0'
 }
 ```
 
@@ -36,7 +36,7 @@ And then simply add the following line to the `dependencies` section of your app
 
 ```
 dependencies {
-	implementation 'com.github.imgopt:imageOptAndroid:1.0.0'
+	implementation 'com.github.imgopt:imageOptAndroid:1.4.0'
 }
 ```
 
