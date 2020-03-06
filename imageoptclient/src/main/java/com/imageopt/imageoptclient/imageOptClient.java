@@ -25,7 +25,7 @@ public class imageOptClient {
      *   crop : whether or not, the image can be cropped if needed to match the requested size
      *   locale: specifies the preferred language of the image
      * Returns:
-     *   imageOptURL: imageOpt URL for the request parameters
+     *   imageOptURL: imageOpt URL for the requested parameters
      */
 
     public static Uri constructURL(final String imageURL, final Size imageSize, final Boolean crop, final Locale locale) {
