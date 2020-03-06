@@ -50,7 +50,33 @@ This is a simple interface with one function onSuccess which is called with para
     }
 ```
 #### constructURL
-Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL and then calls onSuccess callback with that URL.
+Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL & crop parameter, and finally calls onSuccess callback with that URL.
+
+```
+/* Parameters:
+ *   imageUrl : specifies the url of the imageSet to be loaded
+ *   imageView : specifies the image view into which the image will loaded/displayed
+ *   crop : whether or not, the image can be cropped if needed to match the requested size
+ *   overrideSize : if specified this parameter will be used as image size else the size
+ *                          will be taken from image view.
+ *   callback : callback.onSuccess will be called with parameterized imageOpt url
+ */
+```
+#### constructURLAutoLocale
+Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL, crop parameter & current locale/language of phone/app, and finally calls onSuccess callback with that URL.
+
+```
+/* Parameters:
+ *   imageUrl : specifies the url of the imageSet to be loaded
+ *   imageView : specifies the image view into which the image will loaded/displayed
+ *   crop : whether or not, the image can be cropped if needed to match the requested size
+ *   overrideSize : if specified this parameter will be used as image size else the size
+ *                          will be taken from image view.
+ *   callback : callback.onSuccess will be called with parameterized imageOpt url
+ */
+```
+#### constructURLWithLocale
+Function to construct an imageOpt URL with query parameters, given an imageSet URL created at [Image CDN][1] and an imageView. This function waits for imageView size to be finalized, then constructs parameterized imageOpt URL using the given imageSet URL, crop parameter & locale parameter and finally calls onSuccess callback with that URL.
 
 ```
 /* Parameters:
@@ -59,6 +85,7 @@ Function to construct an imageOpt URL with query parameters, given an imageSet U
  *   crop : whether or not, the image can be cropped if needed to match the requested size
  *   overrideSize : if specified this parameter will be used as image size else the size 
  *                          will be taken from image view.
+ *   locale : specifies the preferred language of the image
  *   callback : callback.onSuccess will be called with parameterized imageOpt url
  */
 ```
@@ -71,7 +98,7 @@ import com.imageopt.imageoptclient.imageOptClient;
 
 	...
 
-/* Use the URL of imageSet obtained from imageOpt.com, this can be directly used 
+/* Use the URL of imageSet obtained from imageOpt.com, this can be directly used
  * or fetched from backend server */
  String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
 
@@ -109,10 +136,65 @@ imageOptClient.constructURL( imageUrl, imageView, true, new Size(60,40),
 		}
 });
 ```
+Code below demonstrats how to load a localized image from the imageSet, in this case the first preferred language set by the user in setting will be used.
+```
+/* Import imageOptClient */
+import com.imageopt.imageoptclient.imageOptClient;
+
+	...
+
+/* Use the URL of imageSet obtained from imageOpt.com, this can be directly used
+ * or fetched from backend server */
+ String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
+
+// Replace imageView with any other view of type ImageView as per your needs
+final ImageView imageView = findViewById(R.id.image_view);
+
+imageOptClient.constructURLAutoLocale( imageUrl, imageView, false, null,
+	new imageOptClient.imageOptCallback() {
+		@Override
+		public void onSuccess(String imageOptUrl) {
+			/* Here we use Picasso to fetch, you can use any method of your choice,
+			 * just make sure standard cache control is enabled */
+			Picasso.get()
+				.load(imageOptUrl)
+				.into(imageView);
+		}
+});
+```
+Code below demonstrats how to load a localized image from the imageSet, in this case the preferred locale is passed as a parameter.
+```
+/* Import imageOptClient */
+import com.imageopt.imageoptclient.imageOptClient;
+
+	...
+
+/* Use the URL of imageSet obtained from imageOpt.com, this can be directly used
+ * or fetched from backend server */
+ String imageUrl = "https://p1.imageopt.net/9zt-ct/q"
+
+// Replace imageView with any other view of type ImageView as per your needs
+final ImageView imageView = findViewById(R.id.image_view);
+
+// For example create a locale with a language code
+Locale locale = new Locale("ar");
+
+imageOptClient.constructURLWithLocale( imageUrl, imageView, false, null, locale,
+	new imageOptClient.imageOptCallback() {
+		@Override
+		public void onSuccess(String imageOptUrl) {
+			/* Here we use Picasso to fetch, you can use any method of your choice,
+			 * just make sure standard cache control is enabled */
+			Picasso.get()
+				.load(imageOptUrl)
+				.into(imageView);
+		}
+});
+```
 License
 --------
 
-    Copyright (c) 2019 imageOpt
+    Copyright (c) 2019-20 imageOpt
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
